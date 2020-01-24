@@ -9,14 +9,14 @@ script:
     - docker run -e CI=true docker-complex-test npm test
 
 after_success:
-    - docker build -t multi-client ./client
-    - docker build -t multi-nginx ./nginx
-    - docker build -t multi-server ./server
-    - docker build -t multi-worker ./worker
+    - docker build -t ctobyn/multi-client ./client
+    - docker build -t ctobyn/multi-nginx ./nginx
+    - docker build -t ctobyn/multi-server ./server
+    - docker build -t ctobyn/multi-worker ./worker
 
     - echo "$DOCKER_PW" | docker login -u "$DOCKER_ID" --password-stdin
-    
-    - docker push multi-client
-    - docker push multi-nginx
-    - docker push multi-server
-    - docker push multi-worker
+
+    - docker push ctobyn/multi-client
+    - docker push ctobyn/multi-nginx
+    - docker push ctobyn/multi-server
+    - docker push ctobyn/multi-worker
